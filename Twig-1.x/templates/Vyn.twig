@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <ul>
+            {# bilar sattes i controllers#}
+            {%for bil in bilar%}
+                {#obs regnr,marke,modell är i kolumnnamn i databasen#}
+                <li>{{bil.regnr}},{{bil.marke}}, {{bil.modell}} </li>
+                {%endfor%}
+        </ul>
+    </body>
+</html>
