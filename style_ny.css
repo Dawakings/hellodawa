@@ -1,0 +1,328 @@
+
+/* http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126
+License: none (public domain) */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,
+cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,
+strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,
+ol,ul,li,fieldset,form,label,legend,table,caption,
+tbody, tfoot, thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,
+main,menu,nav,output,ruby,section,summary,time,mark,
+audio,video
+{
+margin: 0;
+padding: 0;
+border: 0;
+font
+-
+size: 100%;
+font: inherit;
+vertical
+-
+align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, main {
+display: block;
+}
+body {
+line-height: 1;
+}
+ol, ul {
+list-style: none;
+}
+blockquote, q {
+quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+content: ''; content: none;
+}
+table {
+border-collapse: collapse; border-spacing: 0;
+}
+
+body {background-image:url('hemsida_bilder/big-data-series-background.jpg');
+background-repeat: no-repeat;
+background-size: cover;
+font-size: 12pt;
+} 
+
+.container {
+max-width:1200px;
+
+outline-style: solid;
+outline-width:1px;
+margin: 0 auto;
+
+}
+
+.sok_mitten {
+display:none;
+}
+
+h1, h2 {
+text-align:center;
+}
+
+h1 {
+font-size:2em;
+margin:2px;
+font-family: "arial black", sans-serif;
+}
+
+h2 {
+font-size:1.5em;
+margin:2px;
+font-family: arial, sans-serif;
+}
+
+aside {
+float:left;
+width:20%;
+height:20%;
+
+text-align:right;
+
+margin:-1px;
+
+}
+
+
+
+header.logga {
+float:left;
+width:20%;
+height:20%;
+
+margin:-1px;
+
+}
+
+header img{
+max-width:90%;
+}
+
+aside img {
+max-width: 50%;
+
+}
+header.rubrik {
+float:left;
+width:60%;
+font:"arial black",sans-serif;
+height:20%;
+
+margin:-1px;
+}
+
+nav {
+float:left;
+font-family:cambria, sans-serif;
+width:20%;
+height:100%;
+
+margin:-1px;
+}
+
+main {
+font-family:cambria, sans-serif;
+float:left;
+width:60%;
+height:60%;
+text-align:left;
+margin:-1px;
+}
+
+.bild1 {
+	max-width:33.33%;
+	float:left;
+}
+.bild2{
+  width:100%;
+	height:50%;
+	float:left;
+}
+
+.table, td{
+	border: 1px solid black;
+	width:100%;
+	float:left;
+}
+
+.produktrubrik {
+	font-size:1.2em;
+	margin:10px;
+	font-family: arial, sans-serif;
+
+}
+.under1 {
+	float:bottom;
+	width:33.33%;
+}
+main img {
+max-width:90%;
+float:left;
+margin: 0 auto;
+}
+
+.breadcrumbs{
+	float:left;
+	width:100%;
+}
+
+.filler_div {
+font-family:cambria, sans-serif;
+float:left;
+width:20%;
+height:60%;
+
+
+margin:-1px;
+}
+
+footer {
+font-family:cambria, sans-serif;
+height:20%;
+width:100%;
+float:left;
+
+
+margin:-1px;
+}
+
+.clearfix {
+clear:both;
+
+}
+
+.kontaktinfo, .betalsätt, .infoupdate {
+float:left;
+width:33%;
+height:100%;
+
+word-break: break-all;
+}
+
+.kontaktinfo img {
+max-width:40%;
+}
+
+.infoupdate img {
+max-width:50%;
+}
+
+
+
+
+input[type=text], input[type=submit] {
+float:left;
+margin:1px;
+}
+
+li.vald {
+	font-weight:bold;
+}
+
+a:link {
+color:black;
+}
+a:visited {
+color:black;
+}
+a:hover {
+text-decoration:none;
+}
+a:active {
+text-decoration:none;
+}
+
+
+
+@media screen and (max-width:1200px) {
+   Body {
+      background-color:red;
+
+   }
+}
+
+
+
+
+
+
+
+
+@media screen and (max-width:768px) {
+   Body {
+      background-color:blue;
+
+
+   }
+   .filler_div {
+   display:none;
+   }
+
+   main img {
+   max-height:80%;
+
+   }
+
+   nav {
+	width:100%;
+	margin: 1px;
+   }
+
+   li {
+     display: inline;
+ }
+
+ main {
+	 margin:1px;
+	 width:100%;
+ }
+}
+@media screen and (max-width:550px) {
+   Body {
+      background-color:green;
+   }
+
+   main {
+   width:100%;
+   }
+   main img {
+   position:center;
+   }
+
+   .sok_over {
+   display:none;
+   }
+
+   .sok_mitten {
+display:block;
+width:100%;
+
+}
+
+.sok_mitten form {
+margin:0 auto;
+}
+
+.logga img {
+width:100px;
+}
+
+
+}
+
+
+
+@media screen and (max-width:326px) {
+   Body {
+      background-color:yellow;
+   }
+
+   header h2 {
+   display:none;
+   }
+
+}
