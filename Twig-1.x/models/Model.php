@@ -29,9 +29,9 @@ class Model {
         $pdoStatement->execute();
         //.4 hämtar resultatet till en array med hjälp av pdoStatement objekt
         //och dess metod fetchAll
-        $cars = $pdoStatement->fetchAll();
+        $vara = $pdoStatement->fetchAll();
         //5. stänger uppkopplingen
-        return $cars;
+        return $vara;
         }catch (PDOException $pdoexp) {
         //vid fel kastas ett nytt som kontroller får ta hand om
         $pdocon = NULL;
@@ -50,7 +50,8 @@ public function getAllavaror() {
         $pdoStatement = $pdocon->prepare('CALL h14rtand_getallvaror()');
         
         $pdoStatement->execute();
-        return $cars; 
+        $vara = $pdoStatement->fetchAll();
+        return $vara; 
     } catch (PDOException $pdoexp) {
         $pdocon = NULL;
         throw new Exception('Databasfel');
@@ -68,7 +69,8 @@ public function getAllavaror() {
         $pdoStatement = $pdocon->prepare('CALL h14rtand_getcategory()');
         
         $pdoStatement->execute();
-        return $cars; 
+        $vara = $pdoStatement->fetchAll();
+        return $vara; 
     } catch (PDOException $pdoexp) {
         $pdocon = NULL;
         throw new Exception('Databasfel');
@@ -86,7 +88,8 @@ public function getAllavaror() {
         $pdoStatement = $pdocon->prepare("CALL h14rtand_getinfo ('{$id}')");
         
         $pdoStatement->execute();
-        return $cars; 
+        $vara = $pdoStatement->fetchAll();
+        return $vara; 
     } catch (PDOException $pdoexp) {
         $pdocon = NULL;
         throw new Exception('Databasfel');
@@ -104,7 +107,8 @@ public function getAllavaror() {
         $pdoStatement = $pdocon->prepare("CALL h14rtand_getinfobycategory ('{$kategori}')");
         
         $pdoStatement->execute();
-        return $cars; 
+        $vara = $pdoStatement->fetchAll();
+        return $vara; 
     } catch (PDOException $pdoexp) {
         $pdocon = NULL;
         throw new Exception('Databasfel');
@@ -123,7 +127,8 @@ public function getAllavaror() {
         $pdoStatement = $pdocon->prepare("");
         
         $pdoStatement->execute();
-        return $cars; 
+        $vara = $pdoStatement->fetchAll();
+        return $vara;  
     } catch (PDOException $pdoexp) {
         $pdocon = NULL;
         throw new Exception('Databasfel');

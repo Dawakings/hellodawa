@@ -7,9 +7,9 @@
     <body>
         <ul>
             {# bilar sattes i controllers#}
-            {%for bil in bilar%}
+            {%for Vara in varor%}
                 {#obs regnr,marke,modell är i kolumnnamn i databasen#}
-                <li>{{bil.regnr}},{{bil.marke}}, {{bil.modell}} </li>
+                <li>{{Vara.id}},{{Vara.namn}}, {{Vara.kategori}}, {{Vara.pris}} </li>
                 {%endfor%}
         </ul>
     </body>
