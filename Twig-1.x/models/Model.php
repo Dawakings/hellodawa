@@ -38,4 +38,102 @@ class Model {
         throw new Exception('Databasfel - gick inte att hämta alla bilar');
     }
 }
+
+public function getAllavaror() {
+    try {
+    $dsn = 'mysql:host=utb-mysql.du.se;dbname=db06';
+        $username = 'db06';
+        $password = 'Oy9CkDSJ';
+        
+        $pdocon = new PDO($dsn, $username, $password);
+        
+        $pdoStatement = $pdocon->prepare('CALL h14rtand_getallvaror()');
+        
+        $pdoStatement->execute();
+        return $cars; 
+    } catch (PDOException $pdoexp) {
+        $pdocon = NULL;
+        throw new Exception('Databasfel');
+    }
+        }//function
+        
+  public function getCategory() {
+    try {
+    $dsn = 'mysql:host=utb-mysql.du.se;dbname=db06';
+        $username = 'db06';
+        $password = 'Oy9CkDSJ';
+        
+        $pdocon = new PDO($dsn, $username, $password);
+        
+        $pdoStatement = $pdocon->prepare('CALL h14rtand_getcategory()');
+        
+        $pdoStatement->execute();
+        return $cars; 
+    } catch (PDOException $pdoexp) {
+        $pdocon = NULL;
+        throw new Exception('Databasfel');
+    }
+        }//function
+        
+        public function getInfo() {
+    try {
+    $dsn = 'mysql:host=utb-mysql.du.se;dbname=db06';
+        $username = 'db06';
+        $password = 'Oy9CkDSJ';
+        
+        $pdocon = new PDO($dsn, $username, $password);
+        
+        $pdoStatement = $pdocon->prepare("CALL h14rtand_getinfo ('{$id}')");
+        
+        $pdoStatement->execute();
+        return $cars; 
+    } catch (PDOException $pdoexp) {
+        $pdocon = NULL;
+        throw new Exception('Databasfel');
+    }
+        }//function
+        
+        public function getInfoBycategory() {
+    try {
+    $dsn = 'mysql:host=utb-mysql.du.se;dbname=db06';
+        $username = 'db06';
+        $password = 'Oy9CkDSJ';
+        
+        $pdocon = new PDO($dsn, $username, $password);
+        
+        $pdoStatement = $pdocon->prepare("CALL h14rtand_getinfobycategory ('{$kategori}')");
+        
+        $pdoStatement->execute();
+        return $cars; 
+    } catch (PDOException $pdoexp) {
+        $pdocon = NULL;
+        throw new Exception('Databasfel');
+    }
+        }//function
+        
+       
+        public function getPast() {
+    try {
+    $dsn = 'mysql:host=utb-mysql.du.se;dbname=db06';
+        $username = 'db06';
+        $password = 'Oy9CkDSJ';
+        
+        $pdocon = new PDO($dsn, $username, $password);
+        
+        $pdoStatement = $pdocon->prepare("");
+        
+        $pdoStatement->execute();
+        return $cars; 
+    } catch (PDOException $pdoexp) {
+        $pdocon = NULL;
+        throw new Exception('Databasfel');
+    }
+        }//function
+        
+        
+        
+        
+        
+
+
 }
