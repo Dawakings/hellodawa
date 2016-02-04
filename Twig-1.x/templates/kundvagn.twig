@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html lang="se" xml:lang="se">
+<head>
+<meta name="robots" content="noindex, nofollow"> 
+
+<title>Good Data</title>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<link rel="stylesheet" type="text/css" href="../style_nykundvagn.css">
+
+<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+
+
+
+</head>
+<body>
+
+<div class="container">
+
+
+<main>
+<strong>Här är du: <a href="..//hemsida_ny.html">Hem </a> > Kundvagn</strong>
+<div class="kassa"><a href="">Till Kassa</a></div>
+<table class="table">
+    <tr>
+        <th>Antal</th>
+        <th>Vara</th>
+        <th>Pris</th>
+    </tr>
+        {%for vara in varaArray%}
+            {{vara[0].pris}}
+    <tr>
+        <td>{{vara[1]}};</td>
+        <td>{{vara[0].vara}};</td>
+        <td>{{vara[0].pris|number_format(2,',',' ')}} kr</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+            <th>Totalsumma:</th>
+        <td>{{(vara[1]* vara[0].pris| number_format(2,',',' ')}} kr</td>
+    </tr>
+    {%endfor%}
+</table>
+
+
+
+
+</main>
+
+<footer>
+
+<div class="kontaktinfo">
+<p>Good Data<br>Gatan 1<br>78100 Borlänge<br>Tel: +46(0)243-12345</p>
+<br>
+<img src="../hemsida_bilder/trygg_e-handel.png" alt="Logga trygg e-handel">
+</div>
+<div class="betalsätt"><p><strong>Betalsätt</strong><br>Konto-/kreditkort, faktura</p></div>
+
+<div class="infoupdate"><script>document.write("Informationen uppdaterad " + document.lastModified);</script>
+<br><br>
+<img src="../hemsida_bilder/support-self-storage-software_0.png" alt="Bild på kvinna/support">
+</div>
+</footer>
+
+</div>
+
+<div class="clearfix"></div>
+<div>
+<p>
+<a href="http://validator.w3.org/check?uri=referer"><img
+src="http://www.w3.org/html/logo/downloads/HTML5_Logo_64.png"
+alt="Valid HTML5" height="50" width="50"
+style="border:0;" /></a>
+</p>
+<p>
+<a href="http://jigsaw.w3.org/css-validator/check/referer">
+<img style="border:0;width:88px;height:31px"
+src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+alt="Valid CSS!" />
+</a>
+</p>
+</div>
+
+
+
+</body>
+
+</html>
