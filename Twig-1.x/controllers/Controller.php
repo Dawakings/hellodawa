@@ -7,7 +7,7 @@ class Controller {
 
     public function getAllavaror() {
         $modell = new Model();
-        $varorna = $modell->getAllavaror();
+        $varorna = $modell->getAllaVaror();
         Twig_Autoloader::register();
         // i vilken mapp finns templates:erna eg vyerna
         $loader = new Twig_Loader_Filesystem('../templates/');
