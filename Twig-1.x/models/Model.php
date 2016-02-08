@@ -60,7 +60,7 @@ class Model {
 
 
 
-    public function getInfo() {
+    public function getInfo($id) {
         try {
             $dsn = 'mysql:host=utb-mysql.du.se;dbname=db06';
             $username = 'db06';

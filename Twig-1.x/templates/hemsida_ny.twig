@@ -46,7 +46,7 @@
 
                     {%for Vara in varor%}
                         {#obs regnr,marke,modell är i kolumnnamn i databasen#}
-                        <li>{{Vara.kategori}}</li>
+                        <li><a href='index2.php?getinfoByKategori/{{Vara.kategori}}'</li>
                         {%endfor%}
                 </ul>
             </nav>
@@ -61,10 +61,13 @@
                             <td>&nbsp</td>
                         </tr>
                         <tr> 
-                            <td><img src="{{Vara.bildurl}}" class="bild1"></td>
+                            <td><img src='{{Vara.bildurl}}' class="bild1"></td>
                             <td>{{Vara.infoshort}}</td>
                             <td>{{Vara.pris}} SEK</td>
-                        </tr> 
+                        </tr>
+                        <tr>
+                        <td><a href='index2.php?addtoCart/{{Vara.id}}'>Lägg till i kundvagn</a></td>
+                        </tr>
                     
                     
                 {%endfor%}

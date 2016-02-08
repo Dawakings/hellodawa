@@ -1,49 +1,69 @@
 <!DOCTYPE html>
 
 <html lang="se" xml:lang="se">
-<head>
-<meta name="robots" content="noindex, nofollow"> 
+    <head>
+        <meta name="robots" content="noindex, nofollow"> 
 
-<title>Good Data</title>
+        <title>Good Data</title>
 
-<meta charset="UTF-8">
+        <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<link rel="stylesheet" type="text/css" href="../style_nykundvagn.css">
+        <link rel="stylesheet" type="text/css" href="../style_nykundvagn.css">
 
-<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
-
-
-
-</head>
-<body>
-
-<div class="container">
+        <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
 
 
-<main>
-<strong>Här är du: <a href="..//hemsida_ny.html">Hem </a> > Kundvagn</strong>
-<div class="kassa"><a href="">Till Kassa</a></div>
-<table class="table">
-    <tr>
-        <th>Antal</th>
-        <th>Vara</th>
-        <th>Pris</th>
-    </tr>
-        {%for vara in varaArray%}
-            {{vara[0].pris}}
-    <tr>
-        <td>{{vara[1]}};</td>
-        <td>{{vara[0].vara}};</td>
-        <td>{{vara[0].pris|number_format(2,',',' ')}} kr</td>
-    </tr>
-    <tr>
-        <td>&nbsp;</td>
-            <th>Totalsumma:</th>
-        <td>{{(vara[1]* vara[0].pris| number_format(2,',',' ')}} kr</td>
-    </tr>
-    {%endfor%}
+
+    </head>
+    <body>
+
+        <div class="container">
+
+
+            <main>
+                <strong>Här är du: <a href="..//hemsida_ny.html">Hem </a> > Kundvagn</strong>
+                <div class="kassa"><a href="">Till Kassa</a></div>
+
+
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Artikelnummer</th>
+                            <th>Namn</th>
+                            <th>Pris</th>
+                            <th>Summa</th>
+                            <th>Minska/tabort</th>
+                            <th>Lägga till</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        {%foreach temp in kundvagnen %)
+                {{temp[0].pris}}
+
+                     <tr>
+                          
+                            <td>{{temp[0].id}}</td>
+                            <td>{{temp[0].namn}}</td>
+                            <td>{{temp[0].pris|number_format(2,',',' ')}} kr</td>
+                            <td>{{temp[1]}}</td>
+                            <td>{{(temp[1] * temp[0].pris)|number_format(2,',',' ')}} kr</td>
+                            <td><a href='index1.php?deletefromCart/{{temp[0].regnr}}'>Ta bort</a></td>
+                            <td><a href='index1.php?addtoCart/{{temp[0].regnr}}'>Lägg till</a></td>
+                        </tr>
+                         {%endforeach%}
+        <tr>
+            <td>Att betala: {{attBetala|number_format(2, ',', ' ')}} kr</td>
+        </tr>
+        
+        
+    </tbody>
+    
 </table>
 
 
