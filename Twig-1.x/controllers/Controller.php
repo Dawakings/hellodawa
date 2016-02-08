@@ -18,61 +18,37 @@ class Controller {
         //detta namn
         $template->display(array('varor' => $varorna));
     }
-
-    public function getAllaDatorer() {
+    
+    public function getKategories() {
         $modell = new Model();
-        $data = $modell->getAllaDatorer();
+        $varorna = $modell->getKategories();
         Twig_Autoloader::register();
         // i vilken mapp finns templates:erna eg vyerna
-        $loader = new Twig_Loader_Filesystem('../templates/undersidor/');
+        $loader = new Twig_Loader_Filesystem('../templates/');
         $twig = new Twig_Environment($loader);
         // laddar vyn som ska visa data om bilar
-        $template = $twig->loadTemplate('dator.twig');
+        $template = $twig->loadTemplate('hemsida_ny.twig');
         //sätter data till variablen bilar som sedan är åtkomlig i vyn via
         //detta namn
-        $template->display(array('Data' => $data));
+        $template->display(array('varor' => $varorna));
     }
-
-    public function getTelefon() {
+    
+    public function getinfoByKategori($kategori){
         $modell = new Model();
-        $telefon = $modell->getTelefon();
+        $varornaMain = $modell->getinfoByKategori($kategori);
         Twig_Autoloader::register();
         // i vilken mapp finns templates:erna eg vyerna
-        $loader = new Twig_Loader_Filesystem('../templates/undersidor/');
+        $loader = new Twig_Loader_Filesystem('../templates/');
         $twig = new Twig_Environment($loader);
         // laddar vyn som ska visa data om bilar
-        $template = $twig->loadTemplate('surf.twig');
+        $template = $twig->loadTemplate('hemsida_ny.twig');
         //sätter data till variablen bilar som sedan är åtkomlig i vyn via
         //detta namn
-        $template->display(array('Telefon' => $telefon));
+        $template->display(array('varornaMain' => $varornaMain));
     }
+    
 
-    public function getTillbehor() {
-        $modell = new Model();
-        $telefon = $modell->getTillbehor();
-        Twig_Autoloader::register();
-        // i vilken mapp finns templates:erna eg vyerna
-        $loader = new Twig_Loader_Filesystem('../templates/undersidor/');
-        $twig = new Twig_Environment($loader);
-        // laddar vyn som ska visa data om bilar
-        $template = $twig->loadTemplate('tillbehor.twig');
-        //sätter data till variablen bilar som sedan är åtkomlig i vyn via
-        //detta namn
-        $template->display(array('Surf' => $telefon));
-    }
+  
 
-    public function getErbjudande() {
-        $modell = new Model();
-        $erbjudande = $modell->getErbjudande();
-        Twig_Autoloader::register();
-        // i vilken mapp finns templates:erna eg vyerna
-        $loader = new Twig_Loader_Filesystem('../templates/undersidor/');
-        $twig = new Twig_Environment($loader);
-        // laddar vyn som ska visa data om bilar
-        $template = $twig->loadTemplate('erbjudande.twig');
-        //sätter data till variablen bilar som sedan är åtkomlig i vyn via
-        //detta namn
-        $template->display(array('erbjudande' => $erbjudande));
-    }
 
 }

@@ -43,19 +43,19 @@
 
 <nav>
 <ul>
-
-
-<li><a href="undersidor/dator.html">Datorer</a></li>
-
-<li><a href="undersidor/tillbehor.html">Möss/Tangentbord/etc</a></li>
-<li><a href="undersidor/surf.html">Telefon/Surfplatta</a></li>
-<li><a href="undersidor/erbjudande.html">Erbjudande</a></li>
-
-</ul>
+            
+            {%for Vara in varor%}
+                {#obs regnr,marke,modell är i kolumnnamn i databasen#}
+                <li>{{Vara.kategori}}</li>
+                {%endfor%}
+        </ul>
 </nav>
 
 <main>
-<img src="hemsida_bilder/dator.png" alt="rea">
+{%for Vara in varornaMain%}
+                {#obs regnr,marke,modell är i kolumnnamn i databasen#}
+                <li>{{Vara.id}}, {{Vara.namn}}, {{Vara.kategori}}  </li>
+                {%endfor%}
 
 </main>
 

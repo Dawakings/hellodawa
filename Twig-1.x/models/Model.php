@@ -13,32 +13,8 @@
  */
 class Model {
 
-    public function getAllaDatorer() {
-        try {
-            //vilken databasserver och databasnamn ska användas
-            $dsn = 'mysql:host=utb-mysql.du.se;dbname=db06';
-            $username = 'db06';
-            $password = 'Oy9CkDSJ';
-            //1.öppnar uppkoppling, en "connection" mot databasen
-            $pdocon = new PDO($dsn, $username, $password);
-            //2. preparerar en sql fråga med hjälp av PDO(pdocon) objekt
-            //och dess metod prepare som returnerar ett pdoStatement objekt
-            //$pdoStatement = $pdocon->prepare('SELECT * FROM bilar');
-            // anrop av stored procedures
-            $pdoStatement = $pdocon->prepare('SELECT * FROM Gooddata_h14rtand()');
-            //3. exekverar frågan med hjälp av pdoStatementobjektet och dess metod execute
-            $pdoStatement->execute();
-            //.4 hämtar resultatet till en array med hjälp av pdoStatement objekt
-            //och dess metod fetchAll
-            $vara = $pdoStatement->fetchAll();
-            //5. stänger uppkopplingen
-            return $vara;
-        } catch (PDOException $pdoexp) {
-            //vid fel kastas ett nytt som kontroller får ta hand om
-            $pdocon = NULL;
-            throw new Exception('Databasfel - gick inte att hämta alla bilar');
-        }
-    }
+   
+ 
 
     public function getAllavaror() {
         try {
@@ -59,9 +35,9 @@ class Model {
         }
     }
 
-//function
 
-    public function getCategory() {
+
+    public function getKategories() {
         try {
             $dsn = 'mysql:host=utb-mysql.du.se;dbname=db06';
             $username = 'db06';
@@ -79,8 +55,10 @@ class Model {
             throw new Exception('Databasfel');
         }
     }
+    
+  
 
-//function
+
 
     public function getInfo() {
         try {
@@ -103,7 +81,7 @@ class Model {
 
 //function
 
-    public function getInfoBycategory() {
+    public function getinfoByKategori($kategori) {
         try {
             $dsn = 'mysql:host=utb-mysql.du.se;dbname=db06';
             $username = 'db06';
@@ -143,60 +121,12 @@ class Model {
         }
     }
 
-//function
 
-    public function getTelefon() {
-        try {
-            $dsn = 'mysql:host=utb-mysql.du.se;dbname=db06';
-            $username = 'db06';
-            $password = 'Oy9CkDSJ';
 
-            $pdocon = new PDO($dsn, $username, $password);
+   
 
-            $pdoStatement = $pdocon->prepare("");
+   
 
-            $pdoStatement->execute();
-            $vara = $pdoStatement->fetchAll();
-            return $vara;
-        } catch (Exception $ex) {
-            $pdocon = NULL;
-        }
-    }
-
-    public function getTillbehor() {
-        try {
-            $dsn = 'mysql:host=utb-mysql.du.se;dbname=db06';
-            $username = 'db06';
-            $password = 'Oy9CkDSJ';
-
-            $pdocon = new PDO($dsn, $username, $password);
-
-            $pdoStatement = $pdocon->prepare("");
-
-            $pdoStatement->execute();
-            $vara = $pdoStatement->fetchAll();
-            return $vara;
-        } catch (Exception $ex) {
-            $pdocon = NULL;
-        }
-    }
-
-    public function getErbjudande() {
-        try {
-            $dsn = 'mysql:host=utb-mysql.du.se;dbname=db06';
-            $username = 'db06';
-            $password = 'Oy9CkDSJ';
-
-            $pdocon = new PDO($dsn, $username, $password);
-
-            $pdoStatement = $pdocon->prepare("");
-
-            $pdoStatement->execute();
-            $vara = $pdoStatement->fetchAll();
-            return $vara;
-        } catch (Exception $ex) {
-            $pdocon = NULL;
-        }
-    }
+    
 
 }
