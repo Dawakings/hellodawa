@@ -156,9 +156,14 @@ margin:-1px;
 	width:33.33%;
 }
 main img {
-max-width:90%;
+max-width:100%;
 float:left;
 margin: 0 auto;
+}
+
+main table, td {
+ border:none;
+    
 }
 
 .breadcrumbs{

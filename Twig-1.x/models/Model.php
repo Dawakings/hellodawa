@@ -130,3 +130,9 @@ class Model {
     
 
 }
+/*
+$objmodel = new Model();
+
+var_dump($objmodel->getinfoByKategori('Datorer'));
+ 
+ */

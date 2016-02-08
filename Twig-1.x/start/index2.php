@@ -13,6 +13,6 @@
         $cont = new Controller();
         //anropar metod på controllerobjekt
         //blir tex $cont->getAllCars();
-        $cont->$queryArray[0]();
+        $cont->$queryArray[0]($queryArray[1]);
         ?>
 
