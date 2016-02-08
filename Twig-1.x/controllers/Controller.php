@@ -2,6 +2,7 @@
 
 require_once '../lib/Twig/Autoloader.php';
 require_once '../models/Model.php';
+session_start();
 
 class Controller {
     
