@@ -43,7 +43,7 @@
                     </thead>
                     <tbody>
                         
-                        {%foreach temp in kundvagnen %)
+                        {%for temp in kundvagnen%}
                 {{temp[0].pris}}
 
                      <tr>
@@ -53,10 +53,10 @@
                             <td>{{temp[0].pris|number_format(2,',',' ')}} kr</td>
                             <td>{{temp[1]}}</td>
                             <td>{{(temp[1] * temp[0].pris)|number_format(2,',',' ')}} kr</td>
-                            <td><a href='index1.php?deletefromCart/{{temp[0].regnr}}'>Ta bort</a></td>
-                            <td><a href='index1.php?addtoCart/{{temp[0].regnr}}'>Lägg till</a></td>
+                            <td><a href='index2.php?deletefromCart/{{temp[0].id}}'>Ta bort</a></td>
+                            <td><a href='index2.php?addtoCart/{{temp[0].id}}'>Lägg till</a></td>
                         </tr>
-                         {%endforeach%}
+                         {%endfor%}
         <tr>
             <td>Att betala: {{attBetala|number_format(2, ',', ' ')}} kr</td>
         </tr>
