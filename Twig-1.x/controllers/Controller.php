@@ -7,46 +7,47 @@ session_start();
 class Controller {
 
     private $cart;
+    private $model;
+    private $loader;
+    private $twig;
+    
+
+    public function __construct() {
+        $this->model = new Model();
+        Twig_Autoloader::register();
+        $this->loader = new Twig_Loader_Filesystem('../templates/');
+        $this->twig = new Twig_Environment($this->loader);
+    }
 
     public function getAllavaror() {
-        $modell = new Model();
-        $varorna = $modell->getAllaVaror();
-        Twig_Autoloader::register();
+
+
+        $varorna = $this->model->getAllaVaror();
         // i vilken mapp finns templates:erna eg vyerna
-        $loader = new Twig_Loader_Filesystem('../templates/');
-        $twig = new Twig_Environment($loader);
         // laddar vyn som ska visa data om bilar
-        $template = $twig->loadTemplate('Vyn.twig');
+        $template = $this->twig->loadTemplate('hemsida_ny.twig');
         //sätter data till variablen bilar som sedan är åtkomlig i vyn via
         //detta namn
         $template->display(array('varor' => $varorna));
     }
 
     public function getKategories() {
-        $modell = new Model();
-        $varorna = $modell->getKategories();
-        Twig_Autoloader::register();
+        $varorna = $this->model->getKategories();
         // i vilken mapp finns templates:erna eg vyerna
-        $loader = new Twig_Loader_Filesystem('../templates/');
-        $twig = new Twig_Environment($loader);
         // laddar vyn som ska visa data om bilar
-        $template = $twig->loadTemplate('hemsida_ny.twig');
+        $template = $this->twig->loadTemplate('hemsida_ny.twig');
         //sätter data till variablen bilar som sedan är åtkomlig i vyn via
         //detta namn
         $template->display(array('varor' => $varorna));
     }
 
     public function getinfoByKategori($kategori) {
-        $modell = new Model();
-        $varornaMain = $modell->getinfoByKategori($kategori);
-        $varorna = $modell->getKategories();
+        $varornaMain = $this->model->getinfoByKategori($kategori);
+        $varorna = $this->model->getKategories();
 
-        Twig_Autoloader::register();
         // i vilken mapp finns templates:erna eg vyerna
-        $loader = new Twig_Loader_Filesystem('../templates/');
-        $twig = new Twig_Environment($loader);
         // laddar vyn som ska visa data om bilar
-        $template = $twig->loadTemplate('hemsida_ny.twig');
+        $template = $this->twig->loadTemplate('hemsida_ny.twig');
         //sätter data till variablen bilar som sedan är åtkomlig i vyn via
         //detta namn
         $template->display(array('varornaMain' => $varornaMain, 'varor' => $varorna));
@@ -57,16 +58,12 @@ class Controller {
     }
 
     public function getinfo($id) {
-        $modell = new Model();
-        $varornaMain = $modell->getInfo($id);
-        $varorna = $modell->getKategories();
+        $varornaMain = $this->model->getInfo($id);
+        $varorna = $this->model->getKategories();
 
-        Twig_Autoloader::register();
         // i vilken mapp finns templates:erna eg vyerna
-        $loader = new Twig_Loader_Filesystem('../templates/');
-        $twig = new Twig_Environment($loader);
         // laddar vyn som ska visa data om bilar
-        $template = $twig->loadTemplate('hemsida_ny.twig');
+        $template = $this->twig->loadTemplate('hemsida_ny.twig');
         //sätter data till variablen bilar som sedan är åtkomlig i vyn via
         //detta namn
         $template->display(array('varornaMain' => $varornaMain, 'varor' => $varorna));
@@ -78,7 +75,7 @@ class Controller {
 
     public function addtoCart($id) {
         if ($_SESSION['cart']) {
-            $this->cart =  $_SESSION['cart'];
+            $this->cart = $_SESSION['cart'];
             $kundvagnArray = $this->getinfo($id);
 
             if (!array_key_exists($id, $this->cart)) {
@@ -88,9 +85,7 @@ class Controller {
                 $this->cart[$id][1] ++;
                 $_SESSION['cart'] = $this->cart;
             }
-            
-        } 
-        else {
+        } else {
             $_SESSION['cart'] = $this->cart;
             $kundvagnArray = $this->getInfo($id);
 
@@ -98,7 +93,6 @@ class Controller {
 
             $_SESSION['cart'] = $this->cart;
         }
-        
     }
 
     public function deletefromCart($id) {
@@ -125,10 +119,7 @@ class Controller {
     }
 
     public function showCart() {
-        Twig_Autoloader::register();
-        $loader = new Twig_Loader_Filesystem('../templates/');
-        $twig = new Twig_Environment($loader);
-        $template = $twig->loadTemplate('kundvagn.twig');
+        $template = $this->twig->loadTemplate('kundvagn.twig');
 
         $template->display(array('kundvagnen' => $_SESSION['cart'], 'attBetala' => $this->belopp()));
     }
