@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <ul>
+            
+            {%for Vara in varor%}
+               
+         <li>{{Vara.id}},{{Vara.namn}},{{Vara.kategori}},{{Vara.pris}},<img src='{{Vara.bildurl}}'alt='{{Vara.bildurl}}'>,{{Vara.infoshort}},{{Vara.infoshort}} </li>
+                {%endfor%}
+        </ul>
+    </body>
+</html>

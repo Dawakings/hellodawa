@@ -10,7 +10,6 @@ class Controller {
     private $model;
     private $loader;
     private $twig;
-    
 
     public function __construct() {
         $this->model = new Model();
@@ -93,6 +92,7 @@ class Controller {
 
             $_SESSION['cart'] = $this->cart;
         }
+        $this->showCart();
     }
 
     public function deletefromCart($id) {
@@ -122,6 +122,21 @@ class Controller {
         $template = $this->twig->loadTemplate('kundvagn.twig');
 
         $template->display(array('kundvagnen' => $_SESSION['cart'], 'attBetala' => $this->belopp()));
+    }
+
+    public function addVara() {
+        $this->model->addVara();
+        $this->showAdmin();
+
+        
+    }
+
+    public function showAdmin() {
+        $template = $this->twig->loadTemplate('Vyn_1.twig');
+
+        $fillAdmin = $this->getAllavaror();
+
+        $template->display(array('varor' => $fillAdmin));
     }
 
 }
