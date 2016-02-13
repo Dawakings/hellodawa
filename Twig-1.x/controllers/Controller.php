@@ -132,16 +132,28 @@ class Controller {
     }
 
     public function showAdmin() {
-        $template = $this->twig->loadTemplate('Vyn_1.twig');
+        $template = $this->twig->loadTemplate('admin.twig');
 
-        $fillAdmin = $this->getAllavaror();
+        $fillAdmin = $this->model->getAllavaror();
 
         $template->display(array('varor' => $fillAdmin));
+    }
+    
+    
+    public function deleteVara() {
+        $this->model->deleteVara();
+        $this->showAdmin();
+        
+    }
+    
+    public function updateVara() {
+        $this->model->updateVara();
+        $this->showAdmin();
     }
 
 }
 
-/*
-$obj= new Controller();
+
+/*$obj= new Controller();
 
 var_dump($obj->addtoCart(0)); */

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <ul>
+
+            {%for Vara in varor%}
+
+                <li>{{Vara.id}},{{Vara.namn}},{{Vara.kategori}},{{Vara.pris}},<img src='<!--{{Vara.bildurl}}->'alt='bild på {{Vara.namn}}'>,{{Vara.infoshort}},{{Vara.infoshort}} </li>
+                {%endfor%}
+        </ul>
+
+        <form action="index2.php?deleteVara" method="POST">
+            Radera ID <input type="text" name="id"> <input type="submit" value="Submit"> 
+        </form>
+        <form action="index2.php?updateVara" method="POST">
+            Uppdatera på ID <input type="text" name="id"> Namn <input type="text" name="namn">  Kategori  <input type="text" name="kategori"> pris <input type="text" name="pris"> url till bild  <input type="text" name="bildurl">  kort info  <input type="text" name="infoshort">  lång info  <input type="text" name="infolong">  <input type="submit" value="Submit"> 
+        </form>
+       <form action="index2.php?addVara" method="POST">
+            Lägga till vara <input type="text" name="id" value="ID skapas automatiskt" disabled> Namn <input type="text" name="namn">  Kategori  <input type="text" name="kategori"> pris <input type="text" name="pris"> url till bild  <input type="text" name="bildurl">  kort info  <input type="text" name="infoshort">  lång info  <input type="text" name="infolong">  <input type="submit" value="Submit"> 
+        </form>
+
+    </body>
+</html>
