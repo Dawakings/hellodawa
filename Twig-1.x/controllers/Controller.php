@@ -130,6 +130,10 @@ class Controller {
 
         
     }
+    
+    public function showError() {
+        $this->twig->loadTemplate('error.twig');
+    }
 
     public function showAdmin() {
         $template = $this->twig->loadTemplate('admin.twig');
@@ -151,7 +155,66 @@ class Controller {
         $this->showAdmin();
     }
 
-}
+    public function validate() {
+        $error = array();
+        foreach ($_POST as $key => $value ) {
+            
+            //tomt
+            if ($value == '') {
+            $error[$key] = 'Får inte vara tomt';
+            } else {
+                switch ($key) {
+                    case 'id':
+                    if ($this->validateId($value) != null) {
+                        $error[$key] = $this->validateId($value);
+                    } //if
+                    break;
+                  case 'pris':
+                      if($this->validatePris($value) != null ) {
+                          $error[$key] = $this->validatePris($value);
+                      }
+                      break;
+                  default:
+                    
+                } //switch
+            } //else
+        } //loop
+    } //function
+            
+            
+       
+           
+       
+        
+        
+   
+    public function validateId() {
+    
+       }
+       
+       
+    public function validatePris() {
+        $error;
+     if(!is_numeric($value)) {
+         
+          $error = 'Bara siffror i priset';
+    }
+    return $error;
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+     }
 
 
 /*$obj= new Controller();
