@@ -14,13 +14,13 @@
         </ul>
 
         <form action="index2.php?deleteVara" method="POST">
-            Radera ID <input type="text" name="id"> <input type="submit" value="Submit"> 
+            Radera ID <input type="text" name="id"> <input type="submit" value="Submit"> <span>{{error}}</span>
         </form>
         <form action="index2.php?updateVara" method="POST">
-            Uppdatera på ID <input type="text" name="id"> Namn <input type="text" name="namn">  Kategori  <input type="text" name="kategori"> pris <input type="text" name="pris"> url till bild  <input type="text" name="bildurl">  kort info  <input type="text" name="infoshort">  lång info  <input type="text" name="infolong">  <input type="submit" value="Submit"> 
+            Uppdatera på ID <input type="text" name="id"> Namn <input type="text" name="namn">  Kategori  <input type="text" name="kategori"> pris <input type="text" name="pris"> url till bild  <input type="text" name="bildurl">  kort info  <input type="text" name="infoshort">  lång info  <input type="text" name="infolong">  <input type="submit" value="Submit"> <span>{{error}}</span>
         </form>
        <form action="index2.php?addVara" method="POST">
-            Lägga till vara <input type="text" name="id" value="ID skapas automatiskt" disabled> Namn <input type="text" name="namn">  Kategori  <input type="text" name="kategori"> pris <input type="text" name="pris"> url till bild  <input type="text" name="bildurl">  kort info  <input type="text" name="infoshort">  lång info  <input type="text" name="infolong">  <input type="submit" value="Submit"> 
+           Lägga till vara <input type="text" name="id" value="ID skapas automatiskt" disabled> Namn <input type="text" name="namn">  Kategori  <input type="text" name="kategori"> pris <input type="text" name="pris"> url till bild  <input type="text" name="bildurl">  kort info  <input type="text" name="infoshort">  lång info  <input type="text" name="infolong">  <input type="submit" value="Submit"> <span>{{error}}</span>
         </form>
 
     </body>

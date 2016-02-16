@@ -116,7 +116,7 @@ class Model {
 
     public function addVara() {
         try {
-            var_dump ($_POST);
+            
             
             $dsn = 'mysql:host=utb-mysql.du.se;dbname=db06';
             $username = 'db06';
@@ -164,7 +164,7 @@ class Model {
     public function updateVara() {
         try {
             
-            var_dump($_POST);
+           
             $dsn = 'mysql:host=utb-mysql.du.se;dbname=db06';
             $username = 'db06';
             $password = 'Oy9CkDSJ';

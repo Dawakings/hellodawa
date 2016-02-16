@@ -10,12 +10,15 @@ class Controller {
     private $model;
     private $loader;
     private $twig;
+   
 
     public function __construct() {
         $this->model = new Model();
         Twig_Autoloader::register();
         $this->loader = new Twig_Loader_Filesystem('../templates/');
         $this->twig = new Twig_Environment($this->loader);
+       
+        
     }
 
     public function getAllavaror() {
@@ -125,12 +128,18 @@ class Controller {
     }
 
     public function addVara() {
-        $this->model->addVara();
-        $this->showAdmin();
 
-        
+        $errorArray = $this->validate();
+        var_dump($errorArray);
+        if (count($errorArray) == 0) {
+            $this->model->addVara();
+            $this->showAdmin();
+        } else {
+           $this->showAdmin();
+         }
+       
     }
-    
+
     public function showError() {
         $this->twig->loadTemplate('error.twig');
     }
@@ -139,82 +148,59 @@ class Controller {
         $template = $this->twig->loadTemplate('admin.twig');
 
         $fillAdmin = $this->model->getAllavaror();
-
-        $template->display(array('varor' => $fillAdmin));
+        $errorArray = $this->validate();
+        
+        
+        $template->display(array('varor' => $fillAdmin, 'error' =>$errorArray[]));
+        
+        
     }
-    
-    
+
     public function deleteVara() {
         $this->model->deleteVara();
         $this->showAdmin();
-        
     }
-    
+
     public function updateVara() {
         $this->model->updateVara();
         $this->showAdmin();
     }
 
     public function validate() {
-        $error = array();
-        foreach ($_POST as $key => $value ) {
-            
+     //  $template = $this->twig->loadTemplate('admin.twig');
+        $errorArray = array();
+        foreach ($_POST as $key => $value) {
+
             //tomt
             if ($value == '') {
-            $error[$key] = 'Får inte vara tomt';
+                $errorArray[$key] = 'Får inte vara tomt';
+               // $template->display(array('error' => $errorArray[$key]));
+                
             } else {
                 switch ($key) {
                     case 'id':
-                    if ($this->validateId($value) != null) {
-                        $error[$key] = $this->validateId($value);
-                    } //if
-                    break;
-                  case 'pris':
-                      if($this->validatePris($value) != null ) {
-                          $error[$key] = $this->validatePris($value);
-                      }
-                      break;
-                  default:
-                    
+                        if (!is_numeric($value)) {
+                            $errorArray[$key] = 'Får bara vara siffror';
+                           // $template->display(array('error' => $errorArray[$key]));
+                        } //if
+                        break;
+                    case 'pris':
+                        if (!is_numeric($value)) {
+                            $errorArray[$key] = 'Får bara vara siffror';
+                            // $template->display(array('error' => $errorArray[$key]));
+                        }
+                        break;
+                    default:
                 } //switch
             } //else
         } //loop
-    } //function
-            
-            
-       
-           
-       
-        
-        
-   
-    public function validateId() {
-    
-       }
-       
-       
-    public function validatePris() {
-        $error;
-     if(!is_numeric($value)) {
-         
-          $error = 'Bara siffror i priset';
-    }
-    return $error;
+        return $errorArray;
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-     }
+//function
+}
+
+//class
 
 
 /*$obj= new Controller();
