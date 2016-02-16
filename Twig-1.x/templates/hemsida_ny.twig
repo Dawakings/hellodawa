@@ -33,6 +33,7 @@
                 <a href="index2.php?showCart">
                     <img src="hemsida_bilder/shopping-cart-307772_960_720.png" alt="kundvagn">
                 </a>
+                <a href ="index2.php?login">Logga in admin</a>
             </aside>
 
             <div class="sok_mitten">
@@ -61,7 +62,7 @@
                             <td>&nbsp</td>
                         </tr>
                         <tr> 
-                            <td><img src='{{Vara.bildurl}}' class="bild1"></td>
+                            <td><a href='index2.php?getinfo/{{Vara.id}}'><img src='{{Vara.bildurl}}' class="bild1"></a></td>
                             <td>{{Vara.infoshort}}</td>
                             <td>{{Vara.pris}} SEK</td>
                         </tr>

@@ -10,15 +10,12 @@ class Controller {
     private $model;
     private $loader;
     private $twig;
-   
 
     public function __construct() {
         $this->model = new Model();
         Twig_Autoloader::register();
         $this->loader = new Twig_Loader_Filesystem('../templates/');
         $this->twig = new Twig_Environment($this->loader);
-       
-        
     }
 
     public function getAllavaror() {
@@ -135,9 +132,8 @@ class Controller {
             $this->model->addVara();
             $this->showAdmin();
         } else {
-           $this->showAdmin();
-         }
-       
+            $this->showAdmin();
+        }
     }
 
     public function showError() {
@@ -148,26 +144,40 @@ class Controller {
         $template = $this->twig->loadTemplate('admin.twig');
 
         $fillAdmin = $this->model->getAllavaror();
-        $errorArray = $this->validate();
-        
-        
-        $template->display(array('varor' => $fillAdmin, 'error' =>$errorArray[]));
-        
-        
+        //  $errorArray = $this->validate();
+
+
+        $template->display(array('varor' => $fillAdmin, /* 'error' => $errorArray) */));
     }
 
     public function deleteVara() {
-        $this->model->deleteVara();
-        $this->showAdmin();
+
+        $errorArray = $this->validate();
+        var_dump($errorArray);
+
+        if (count($errorArray) == 0) {
+            $this->model->deleteVara();
+            $this->showAdmin();
+        } else {
+            $this->showAdmin();
+        }
     }
 
     public function updateVara() {
-        $this->model->updateVara();
-        $this->showAdmin();
+
+        $errorArray = $this->validate();
+        var_dump($errorArray);
+
+        if (count($errorArray) == 0) {
+            $this->model->updateVara();
+            $this->showAdmin();
+        } else {
+            $this->showAdmin();
+        }
     }
 
     public function validate() {
-     //  $template = $this->twig->loadTemplate('admin.twig');
+      //  $template = $this->twig->loadTemplate('admin.twig');
         $errorArray = array();
         foreach ($_POST as $key => $value) {
 
@@ -175,32 +185,46 @@ class Controller {
             if ($value == '') {
                 $errorArray[$key] = 'Får inte vara tomt';
                // $template->display(array('error' => $errorArray[$key]));
-                
             } else {
                 switch ($key) {
                     case 'id':
                         if (!is_numeric($value)) {
                             $errorArray[$key] = 'Får bara vara siffror';
-                           // $template->display(array('error' => $errorArray[$key]));
+                          //  $template->display(array('error' => $errorArray[$key]));
                         } //if
-                        break;
+
                     case 'pris':
                         if (!is_numeric($value)) {
                             $errorArray[$key] = 'Får bara vara siffror';
-                            // $template->display(array('error' => $errorArray[$key]));
+                           // $template->display(array('error' => $errorArray[$key]));
                         }
                         break;
                     default:
                 } //switch
             } //else
         } //loop
+
         return $errorArray;
     }
 
-//function
-}
 
-//class
+    public function login() {
+        if (strip_tags($_POST['username']) == 'admin' && strip_tags($_POST['password']) == 'admin') {
+            $_SESSION['loggedin'] = TRUE;            
+            $this->showAdmin();
+            
+           
+        } else {
+            $_SESSION['loggedin'] = FALSE;
+            
+            $this->twig->loadTemplate('LoginForm.twig');
+            
+        }
+    }
+    
+    
+    
+}//class
 
 
 /*$obj= new Controller();
