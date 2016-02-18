@@ -132,7 +132,8 @@ class Controller {
             $this->model->addVara();
             $this->showAdmin();
         } else {
-            $this->showAdmin();
+            $template = $this->twig->loadTemplate('admin.twig');
+            $template->display(array('error' => $errorArray));
         }
     }
 
@@ -159,7 +160,8 @@ class Controller {
             $this->model->deleteVara();
             $this->showAdmin();
         } else {
-            $this->showAdmin();
+            $template = $this->twig->loadTemplate('admin.twig');
+            $template->display(array('error' => $errorArray));
         }
     }
 
@@ -172,31 +174,31 @@ class Controller {
             $this->model->updateVara();
             $this->showAdmin();
         } else {
-            $this->showAdmin();
+            $template = $this->twig->loadTemplate('admin.twig');
+            $template->display(array('error' => $errorArray));
         }
     }
 
     public function validate() {
-      //  $template = $this->twig->loadTemplate('admin.twig');
+        
         $errorArray = array();
         foreach ($_POST as $key => $value) {
 
             //tomt
             if ($value == '') {
-                $errorArray[$key] = 'Får inte vara tomt';
-               // $template->display(array('error' => $errorArray[$key]));
+                $errorArray[$key] = 'Inget fält får vara tomt';
+                
             } else {
                 switch ($key) {
                     case 'id':
                         if (!is_numeric($value)) {
-                            $errorArray[$key] = 'Får bara vara siffror';
-                          //  $template->display(array('error' => $errorArray[$key]));
-                        } //if
-
+                            $errorArray[$key] = 'ID får bara vara siffror';
+                        }
+                        break;
                     case 'pris':
                         if (!is_numeric($value)) {
-                            $errorArray[$key] = 'Får bara vara siffror';
-                           // $template->display(array('error' => $errorArray[$key]));
+                            
+                        $errorArray[$key] = 'PRIS får bara vara siffror';
                         }
                         break;
                     default:
@@ -206,25 +208,26 @@ class Controller {
 
         return $errorArray;
     }
+    
+
 
 
     public function login() {
         if (strip_tags($_POST['username']) == 'admin' && strip_tags($_POST['password']) == 'admin') {
-            $_SESSION['loggedin'] = TRUE;            
+            $_SESSION['loggedin'] = TRUE;
             $this->showAdmin();
-            
-           
         } else {
             $_SESSION['loggedin'] = FALSE;
-            
-            $this->twig->loadTemplate('LoginForm.twig');
-            
+
+            $template = $this->twig->loadTemplate('hemsida_ny.twig');
+
+            $template->display(array('loginerror' => 'Felaktigt användarnamn/Lösenord. Logga in med "admin""admin"'));
         }
     }
-    
-    
-    
-}//class
+
+}
+
+//class
 
 
 /*$obj= new Controller();

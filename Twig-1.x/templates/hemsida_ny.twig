@@ -19,14 +19,14 @@
     <body>
         <div class="container">
             <header class="logga">
-                <img src="hemsida_bilder/logga.png" alt="Logga">
+                <a href="index2.php?getKategories"> <img src="hemsida_bilder/logga.png" alt="Logga"></a>
             </header>
             <header class="rubrik">
                 <h1>Good Data</h1>
                 <h2 class="h2">Bra elektronik</h2>
                 
                 <form class="admin" action="index2.php?login" method="POST">
-                    Användarnamn <input type="text" name="username" > <br> Lösendord <input type="text" name="password" >  <input type="submit" value="Logga in som administratör" name="submit">
+                    Användarnamn <input type="text" name="username" > <br> Lösendord <input type="text" name="password" >  <input type="submit" value="Logga in som administratör" name="submit"> {{loginerror}}
                 </form>
             </header>
             <aside>
@@ -64,16 +64,14 @@
                         <tr> 
                             <td>{{Vara.id}}</td>
                             <td>{{Vara.namn}}</td>
-                            <td>&nbsp</td>
+                            <td><a href='index2.php?getinfo/{{Vara.id}}'><img src='{{Vara.bildurl}}' class="bild1"></a></td>
                         </tr>
                         <tr> 
-                            <td><a href='index2.php?getinfo/{{Vara.id}}'><img src='{{Vara.bildurl}}' class="bild1"></a></td>
                             <td>{{Vara.infoshort}}</td>
                             <td>{{Vara.pris}} SEK</td>
+                            <td><a href='index2.php?addtoCart/{{Vara.id}}'>Lägg till i kundvagn</a></td>
                         </tr>
-                        <tr>
-                        <td><a href='index2.php?addtoCart/{{Vara.id}}'>Lägg till i kundvagn</a></td>
-                        </tr>
+                        
                     
                     
                 {%endfor%}
