@@ -2,18 +2,20 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>Good Data</title>
     </head>
     <body>
+        <a href="index2.php?getKategories">Logga ut </a>
         <ul>
-
+<!-- Twigg-syntaxs för att göra utskrifter är "måsvingar" -->
             {%for Vara in varor%}
 
-                <li>{{Vara.id}},{{Vara.namn}},{{Vara.kategori}},{{Vara.pris}},<img src='<!--{{Vara.bildurl}}->'alt='bild på {{Vara.namn}}'>,{{Vara.infoshort}},{{Vara.infoshort}} </li>
+                <li>{{Vara.id}},{{Vara.namn}},{{Vara.kategori}},{{Vara.pris}},<a href='{{Vara.bildurl}}'alt='bild på {{Vara.namn}}'>{{Vara.bildurl}}</a>,{{Vara.infoshort}},{{Vara.infoshort}} </li>
                 {%endfor%}
         </ul>
 
-        <form action="index2.php?deleteVara" method="POST">
+        <form action="index2.php?deleteVara" method="POST"> <!-- Action säger vilken php fil som formuläret använder sig av. Methoden för att 
+            skicka datan med HTTP_POST -->
             Radera ID <input type="text" name="id"><span style="color:red;">{{error.id}}</span> <input type="submit" value="Submit"> 
         </form>
         <form action="index2.php?updateVara" method="POST">

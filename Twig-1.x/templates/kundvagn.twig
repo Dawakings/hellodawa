@@ -23,8 +23,8 @@
 
 
             <main>
-                <strong>Här är du: <a href="..//hemsida_ny.html">Hem </a> > Kundvagn</strong>
-                <div class="kassa"><a href="">Till Kassa</a></div>
+                <strong>Här är du: <a href="index2.php?getKategories">Hem </a> > Kundvagn</strong>
+                <div class="kassa"><!--<a href="">--></div>
 
 
 
@@ -44,7 +44,7 @@
                     <tbody>
                         
                         {%for temp in kundvagnen%}
-                {{temp[0].pris}}
+              <!--  {{temp[0].pris}} -->
 
                      <tr>
                           
@@ -57,7 +57,8 @@
                             <td><a href='index2.php?addtoCart/{{temp[0].id}}'>Lägg till</a></td>
                         </tr>
                          {%endfor%}
-        <tr>
+        <tr> <!-- number_format. Först 2 för antal decimaler. , för decimaltecken och mellanrum " "
+            för tusental. -->
             <td>Att betala: {{attBetala|number_format(2, ',', ' ')}} kr</td>
         </tr>
         

@@ -1,7 +1,7 @@
 
         <?php
-        error_reporting(E_ALL);
-        ini_set('display_errors',1);
+        //error_reporting(E_ALL);
+        //ini_set('display_errors',1);
         //inkluderar
         include_once '../controllers/Controller.php';
         //surfar till denna sida med länken index2.php?getAllCars
