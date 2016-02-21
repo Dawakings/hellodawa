@@ -71,7 +71,7 @@ class Controller {
 
         return $varornaMain;
     }
-
+//metod för att lägga till i kundvagn. Använder sig av tillfälliga sessioner.
     public function addtoCart($id) {
         if ($_SESSION['cart']) {
             $this->cart = $_SESSION['cart'];
